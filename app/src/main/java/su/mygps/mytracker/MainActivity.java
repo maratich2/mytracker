@@ -1,7 +1,9 @@
 package su.mygps.mytracker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,7 +45,7 @@ public class MainActivity extends Activity implements ConnectionCallbacks,
 
     // UI elements
     private TextView lblLocation;
-    private Button btnShowLocation, btnStartLocationUpdates;
+    private Button btnShowLocation, btnStartLocationUpdates, btnShowOnMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class MainActivity extends Activity implements ConnectionCallbacks,
         lblLocation = (TextView) findViewById(R.id.lblLocation);
         btnShowLocation = (Button) findViewById(R.id.btnShowLocation);
         btnStartLocationUpdates = (Button) findViewById(R.id.btnLocationUpdates);
+        btnShowOnMap = (Button) findViewById(R.id.btnShowOnMap);
 
         // First we need to check availability of play services
         if (checkPlayServices()) {
@@ -78,6 +81,19 @@ public class MainActivity extends Activity implements ConnectionCallbacks,
             @Override
             public void onClick(View v) {
                 togglePeriodicLocationUpdates();
+            }
+        });
+
+        btnShowOnMap.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                double latitude = mLastLocation.getLatitude();
+                double longitude = mLastLocation.getLongitude();
+                String lat = Double.toString(latitude);
+                String lon = Double.toString(longitude);
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("geo:" + lat + ", " + lon));
+                startActivity(intent);
             }
         });
 

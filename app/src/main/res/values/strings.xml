@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Location API</string>
-    <string name="lbl_you_are_at">YOU ARE AT</string>
-    <string name="btn_get_location">GET MY LOCATION</string>
-    <string name="btn_start_location_updates">START LOCATION UPDATES</string>
-    <string name="btn_stop_location_updates">STOP LOCATION UPDATES</string>
+    <string name="app_name">MyGPS tracker</string>
+    <string name="lbl_you_are_at">Ваше местоположение</string>
+    <string name="btn_get_location">Получить местоположение</string>
+    <string name="btn_show_on_map">Показать на карте</string>
+    <string name="btn_start_location_updates">Обновлять местоположение</string>
+    <string name="btn_stop_location_updates">Остановить обновление</string>
 </resources>
